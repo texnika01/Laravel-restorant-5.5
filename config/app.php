@@ -164,6 +164,7 @@ return [
         Appstract\BladeDirectives\BladeDirectivesServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
+        jeremykenedy\LaravelLogger\LaravelLoggerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -171,6 +172,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
+
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         App\Providers\EventServiceProvider::class,
