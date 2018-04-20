@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
 /**
  *  Route laravel Loger
  */
-Route::group(['middleware' => ['web', 'activity']], function () {
+/**Route::group(['middleware' => ['web', 'activity']], function () {
     Route::get('/', 'WelcomeController@welcome')->name('welcome');
 });
+*/
