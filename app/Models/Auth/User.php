@@ -64,4 +64,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = ['full_name'];
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function blog() {
+		return $this->hasMany('App\Models\PageModels\Blog');
+    }
+
 }

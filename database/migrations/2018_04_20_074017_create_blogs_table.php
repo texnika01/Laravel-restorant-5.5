@@ -15,6 +15,18 @@ class CreateBlogsTable extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title')->unique()->index();
+            $table->text('text');
+            $table->string('image')->nullable();
+            $table->foreign('category_id')
+				->references('id')
+				->on('categories')
+				->onDelete('cascade');
+			$table->foreign('user_id')
+				->references('id')
+				->on('users')
+				->onDelete('cascade');
+			$table->boolean('active')->default(1);
             $table->timestamps();
         });
     }
