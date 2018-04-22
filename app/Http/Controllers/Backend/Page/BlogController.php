@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Page;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Backend\PageRequest\BlogRequest;
+use App\Models\PageModels\Blog;
 use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
@@ -14,7 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blog = Blog::get();
+        return view('backend.blog.index',compact('blog'));
     }
 
     /**
@@ -24,7 +26,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.blog.create');
     }
 
     /**
@@ -33,7 +35,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
         //
     }
@@ -46,7 +48,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+		$blog = Blog::where('id' , '=', $id)->firstOrFail();
+		return view('backend.blog.show', compact('blog'));
     }
 
     /**
@@ -57,7 +60,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+		$blog = Blog::where('id' , '=', $id)->firstOrFail();
+        return view('backend.blog.edit',compact('blog'));
     }
 
     /**
@@ -67,7 +71,7 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BlogRequest $request, $id)
     {
         //
     }

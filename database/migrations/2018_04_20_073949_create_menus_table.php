@@ -13,11 +13,20 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
+		Schema::create('categories', function (Blueprint $table) {
+			$table->increments('id');
+			$table->string('name')->unique()->index();
+			$table->text('description');
+			$table->boolean('active')->default(1);
+			$table->timestamps();
+		});
+
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique()->index();
             $table->text('menu');
             $table->string('image')->nullable();
+            $table->integer('category_id')->unsigned();
 			$table->foreign('category_id')
 				->references('id')
 				->on('categories')
@@ -34,6 +43,7 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('categories');
         Schema::dropIfExists('menus');
     }
 }
