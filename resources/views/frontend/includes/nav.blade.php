@@ -20,46 +20,39 @@
                     <span class="horizontal-line"></span>
                     <ul class="menu">
                         <li class="active"><a href="{{ route('frontend.index') }}">Home</a></li>
-                        <li><a href="masonry.html">Events</a></li>
-                        <li><a href="galleries.html">Gallery</a></li>
+                        <li><a href="{{ route('frontend.event') }}">Events</a></li>
+                        <li><a href="#">Gallery</a></li>
                         <li class="parent"><a href="#">menu</a>
                             <ul>
-                                <li><a href="menu.html">Classic Menu</a></li>
-                                <li><a href="menu-toggle.html">Toggle Menu</a></li>
+                                <li><a href="{{ route('frontend.menu.clasic') }}">Classic Menu</a></li>
+                                <li><a href="{{ route('frontend.menu.togle') }}">Toggle Menu</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li>                     
-                            @auth
-                                <li ><a href="{{route('frontend.user.dashboard')}}" class="nav-link {{ active_class(Active::checkRoute('frontend.user.dashboard')) }}">{{ __('navs.frontend.dashboard') }}</a></li>
-                            @endauth
-                
-                            @guest
-                                <li ><a href="{{route('frontend.auth.login')}}" class="nav-link {{ active_class(Active::checkRoute('frontend.auth.login')) }}">{{ __('navs.frontend.login') }}</a></li>
-                
-                                @if (config('access.registration'))
-                                    <li ><a href="{{route('frontend.auth.register')}}" class="nav-link {{ active_class(Active::checkRoute('frontend.auth.register')) }}">{{ __('navs.frontend.register') }}</a></li>
-                                @endif
-                            @else
-                                <li class="parent">
-                                    <ul>
-                                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuUser" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            {{ $logged_in_user->name }}
-                                        </a> 
-                                        @can('view backend')
-                                            <li><a href="{{ route('admin.dashboard') }}" class="dropdown-item">{{ __('navs.frontend.user.administration') }}</a></li>
-                                        @endcan              
-                                        <li><a href="{{ route('frontend.user.account') }}" class="dropdown-item {{ active_class(Active::checkRoute('frontend.user.account')) }}">{{ __('navs.frontend.user.account') }}</a></li>
-                                        <li><a href="{{ route('frontend.auth.logout') }}" class="dropdown-item">{{ __('navs.general.logout') }}</a></li>
-                                        </div>
-                                    </ul>
-                                </li>
-                            @endguest
-                
-                            <li class="nav-item"><a href="{{route('frontend.contact')}}" class="nav-link {{ active_class(Active::checkRoute('frontend.contact')) }}">{{ __('navs.frontend.contact') }}</a></li>  
+                        <li><a href="{{ route('frontend.blog') }}">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>         
+                        <li><a href="{{route('frontend.contact')}}">{{ __('navs.frontend.contact') }} 2</a></li>  
+                        @guest
+                            <li><a href="{{route('frontend.auth.login')}}" >{{ __('navs.frontend.login') }}</a></li>
+            
+                            @if (config('access.registration'))
+                                <li ><a href="{{route('frontend.auth.register')}}">{{ __('navs.frontend.register') }}</a></li>
+                            @endif
+                        @else
+                        <li class="parent"><a href="#">Admin</a>
+                            <ul>
+                                <li><a href="#">Welkome: 
+                                    {{ $logged_in_user->name }}
+                                </a> </li>
+                                @can('view backend')
+                                    <li><a href="{{ route('admin.dashboard') }}" >{{ __('navs.frontend.user.administration') }}</a></li>
+                                @endcan              
+                                <li><a href="{{ route('frontend.user.account') }}" >{{ __('navs.frontend.user.account') }}</a></li>
+                                <li><a href="{{ route('frontend.auth.logout') }}">{{ __('navs.general.logout') }}</a></li>
+                                </div>
+                            </ul>
                         </li>
+                        @endguest
+                        
                     </ul>
                     <span class="horizontal-line"></span>
                 </div>	

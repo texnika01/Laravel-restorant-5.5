@@ -41,7 +41,37 @@
                     </ul>
                 </li>
             @endif
+            <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/page*'), 'open') }}">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="icon-user"></i> Site
 
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link {{ active_class(Active::checkUriPattern('admin/page/menu*')) }}" href="{{ route('admin.menu') }}">
+                            Menu
+                            @if ($pending_approval > 0)
+                                <span class="badge badge-danger">{{ $pending_approval }}</span>
+                            @endif
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ active_class(Active::checkUriPattern('admin/auth/event*')) }}" href="{{ route('admin.event') }}">
+                            Event
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ active_class(Active::checkUriPattern('admin/auth/blog*')) }}" href="{{ route('admin.blog') }}">
+                            Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ active_class(Active::checkUriPattern('admin/auth/category*')) }}" href="{{ route('admin.category') }}">
+                            Category
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'open') }}">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                     <i class="icon-list"></i> {{ __('menus.backend.log-viewer.main') }}

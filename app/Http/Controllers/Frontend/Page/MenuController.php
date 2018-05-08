@@ -12,13 +12,26 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexclasic()
     {
         $menu = Menu::where('active', 1)
 				->orderBy('created_at','desc')
 				->paginate(10);
-        return view('frontend.menu.index',compact('menu'));
+        return view('frontend.menu.index_clasic',compact('menu'));
     }
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function indextogle()
+	{
+		$menu = Menu::where('active', 1)
+			->orderBy('created_at','desc')
+			->paginate(10);
+		return view('frontend.menu.index_togle',compact('menu'));
+	}
 
     /**
      * Display the specified resource.

@@ -3,17 +3,18 @@
 @section('title', app_name() . ' | '.__('labels.frontend.auth.login_box_title'))
 
 @section('content')
-    <div class="row justify-content-center align-items-center">
-        <div class="col col-sm-8 align-self-center">
-            <div class="card">
-                <div class="card-header">
-                    <strong>
-                        {{ __('labels.frontend.auth.login_box_title') }}
-                    </strong>
-                </div><!--card-header-->
-
-                <div class="card-body">
-                    {{ html()->form('POST', route('frontend.auth.login.post'))->open() }}
+    <div class="site">
+        <!-- Main Container -->
+        <div class="main">
+            <div class="content single">
+                <article>
+                    <div class="row">
+                        <strong>
+                            {{ __('labels.frontend.auth.login_box_title') }}
+                        </strong>
+                    </div><!--card-header-->
+                    <div class="card-body">
+                        {{ html()->form('POST', route('frontend.auth.login.post'))->open() }}
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -66,17 +67,37 @@
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
-                    {{ html()->form()->close() }}
+                        {{ html()->form()->close() }}
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="text-center">
-                                {!! $socialiteLinks !!}
-                            </div>
-                        </div><!--col-->
-                    </div><!--row-->
-                </div><!--card body-->
-            </div><!--card-->
-        </div><!-- col-md-8 -->
-    </div><!-- row -->
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-center">
+                                    {!! $socialiteLinks !!}
+                                </div>
+                            </div><!--col-->
+                        </div><!--row-->
+                    </div><!--card body-->
+                </article>
+            </div>
+        </div>
+        <!-- End Main Container -->
+    </div>
+
+    <!-- Background Section -->
+    <div class="background">
+        <div class="background-image" style="background-image: url('img/frontend/background/spices.jpg');">
+            <div class="mask"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-overlay">
+        <button class="mobile-toggle dismiss"><span></span></button>
+        <div class="mobile-nav clearfix"></div>
+    </div>
+
+    <!-- To Top Button -->
+    <button class="totop">&uarr;</button>
+
+
 @endsection

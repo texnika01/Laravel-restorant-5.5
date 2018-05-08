@@ -25,6 +25,7 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             $table->string('title')->unique()->index();
             $table->text('menu');
+			$table->decimal('price', 5, 2)->default(0);
             $table->string('image')->nullable();
             $table->integer('category_id')->unsigned();
 			$table->foreign('category_id')

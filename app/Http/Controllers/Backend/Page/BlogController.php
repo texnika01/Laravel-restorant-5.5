@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Page;
 use App\Http\Requests\Backend\PageRequest\BlogRequest;
 use App\Models\PageModels\Blog;
 use App\Http\Controllers\Controller;
+use App\Models\PageModels\Category;
 
 class BlogController extends Controller
 {
@@ -26,7 +27,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('backend.blog.create');
+    	$blog = Category::pluck('name','id');
+        return view('backend.blog.create',compact('blog'));
     }
 
     /**

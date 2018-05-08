@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Page;
 
+use App\Models\PageModels\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+    	$event = Event::where('active', 1)->get();
+        return view('backend.event.index');
     }
 
     /**
@@ -24,7 +26,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+    	$event = Event::pluck('name', 'id');
+        return view('backend.event.create',compact('event'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Page;
 
+use App\Models\PageModels\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.menu.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+    	$category = Category::pluck('name', 'id');
+        return view('backend.menu.create',compact('category'));
     }
 
     /**

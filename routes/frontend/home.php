@@ -6,14 +6,15 @@
  */
 Route::get('/', 'HomeController@index')->name('index');
 /** Route Menu */
-Route::get('menu','Page/MenuController@index')->name('menu');
-Route::get('menu/{id}/show', 'Page/MenuController@show')->name('menu.show');
+Route::get('menu.togle','Page\MenuController@indextogle')->name('menu.togle');
+Route::get('menu.clasic','Page\MenuController@indexclasic')->name('menu.clasic');
+Route::get('menu/{id}/show', 'Page\MenuController@show')->name('menu.show');
 /** Route Event */
-Route::get('event','Page/EventController@index')->name('event');
-Route::get('event/{id}/show', 'Page/EventController@show')->name('event.show');
+Route::get('event','Page\EventController@index')->name('event');
+Route::get('event/{id}/show', 'Page\EventController@show')->name('event.show');
 /** Route blog */
-Route::get('blog','Page/BlogController@index')->name('blog');
-Route::get('blog/{id}/show', 'Page/BlogController@show')->name('blog.show');
+Route::get('blog','Page\BlogController@index')->name('blog');
+Route::get('blog/{id}/show', 'Page\BlogController@show')->name('blog.show');
 
 Route::get('contact', 'ContactController@index')->name('contact');
 Route::post('contact/send', 'ContactController@send')->name('contact.send');
