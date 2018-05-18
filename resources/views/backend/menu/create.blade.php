@@ -13,11 +13,13 @@
 
             <div class="row mt-4">
                 <div class="col">
-                    <form>
+                    <form action="{{route('admin.menu.store')}}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         @include('backend.menu._form')
-                        <button type="button" class="btn btn-outline-primary">Save</button>
-                        <button type="button" class="btn btn-outline-danger">Cancel</button>
+                        {{ html()->submit('Save')->class('btn btn-outline-primary') }}
+                        {{ html()->submit('Cancel')->class('btn btn-outline-danger') }}
                     </form>
+
                 </div>
             </div>
         </div>

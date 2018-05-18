@@ -13,11 +13,11 @@
 
             <div class="row mt-4">
                 <div class="col">
-                    <form>
+                    {{ html()->form('POST', route('admin.event.store'))->acceptsFiles()->open() }}
                         @include('backend.event._form')
-                        <button type="button" class="btn btn-outline-primary">Save</button>
-                        <button type="button" class="btn btn-outline-danger">Cancel</button>
-                    </form>
+                        {{ html()->submit('Save')->class('btn btn-outline-primary') }}
+                        {{ html()->submit('Cancel')->class('btn btn-outline-danger') }}
+                    {{ html()->form()->close() }}
                 </div>
             </div>
         </div>

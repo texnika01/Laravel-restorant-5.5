@@ -23,31 +23,27 @@
                         <table class="table">
                             <thead class="thead-inverse">
                             <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Data</th>
+                                <th>Text</th>
+                                <th>Active</th>
+                                <th>Created At</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($data as $result)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                                <th scope="row">{{$result->id}}</th>
+                                <td>{{$result->name}}</td>
+                                <td>{{$result->data}}</td>
+                                <td>{{$result->text}}</td>
+                                <td>{{$result->active}}</td>
+                                <td>{{$result->created_at}}</td>
                                 <td>@mdo</td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

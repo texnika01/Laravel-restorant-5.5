@@ -12,7 +12,7 @@
 <!-- Category Form Input -->
 <div class="form-group {{ $errors->has('category') ? ' has-error' : ''}}">
     {{ html()->label('Category :') }}
-    {{ html()->select('category_id', ['1','2','3'] ,null )->class('form-control')->placeholder('Category') }}
+    {{ html()->select('category_id', $category ,null )->class('form-control')->placeholder('Category') }}
     @if($errors->has('category'))
         <span class="help-block">
             {{$errors->first('category')}}
@@ -34,7 +34,7 @@
 <!-- Image Form Input -->
 <div class="form-group {{ $errors->has('image') ? ' has-error' : ''}}">
         {{ html()->label('Image :') }}
-        {{ html()->input('file' , 'image', null )->class('form-control') }}
+        {{ html()->input('file' , 'image',null )->class('form-control') }}
         @if($errors->has('image'))
                 <span class="help-block">
             {{$errors->first('image')}}

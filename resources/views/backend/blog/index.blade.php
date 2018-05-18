@@ -23,31 +23,31 @@
                         <table class="table">
                             <thead class="thead-inverse">
                             <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Text</th>
+                                <th>Image</th>
+                                <th>Category</th>
+                                <th>User Uploaded</th>
+                                <th>Active</th>
+                                <th>Created At</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($data as $result)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                                <th scope="row">{{$result->id}}</th>
+                                <td>{{$result->title}}</td>
+                                <td>{{$result->text}}</td>
+                                <td>{{$result->image}}</td>
+                                <td>{{$result->category_id}}</td>
+                                <td>{{$result->user_id}}</td>
+                                <td>{{$result->active}}</td>
+                                <td>{{$result->created_at}}</td>
                                 <td>@mdo</td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

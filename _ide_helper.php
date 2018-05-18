@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.17 on 2018-04-26 06:58:56.
+ * Generated for Laravel 5.6.21 on 2018-05-11 16:34:54.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -10692,6 +10692,18 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Unset the given disk instances.
+         *
+         * @param array|string $disk
+         * @return $this 
+         * @static 
+         */ 
+        public static function forgetDisk($disk)
+        {
+            return \Illuminate\Filesystem\FilesystemManager::forgetDisk($disk);
+        }
+        
+        /**
          * Register a custom driver creator Closure.
          *
          * @param string $driver
@@ -12755,201 +12767,6 @@ namespace Laravel\Socialite\Facades {
  
 }
 
-namespace DaveJamesMiller\Breadcrumbs\Facades { 
-
-    class Breadcrumbs {
-        
-        /**
-         * Register a breadcrumb-generating callback for a page.
-         *
-         * @param string $name The name of the page.
-         * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
-         *     accept additional parameters.
-         * @return void 
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
-         *     used.
-         * @static 
-         */ 
-        public static function register($name, $callback)
-        {
-            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::register($name, $callback);
-        }
-        
-        /**
-         * Register a closure to call before generating breadcrumbs for the current page.
-         * 
-         * For example, this can be used to always prepend the homepage without needing to manually add it to each page.
-         *
-         * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
-         * @return void 
-         * @static 
-         */ 
-        public static function before($callback)
-        {
-            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::before($callback);
-        }
-        
-        /**
-         * Register a closure to call after generating breadcrumbs for the current page.
-         * 
-         * For example, this can be used to append the current page number when using pagination.
-         *
-         * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
-         * @return void 
-         * @static 
-         */ 
-        public static function after($callback)
-        {
-            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::after($callback);
-        }
-        
-        /**
-         * Check if a breadcrumb with the given name exists.
-         * 
-         * If no name is given, defaults to the current route name.
-         *
-         * @param string|null $name The page name.
-         * @return bool Whether there is a registered callback with that name.
-         * @static 
-         */ 
-        public static function exists($name = null)
-        {
-            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::exists($name);
-        }
-        
-        /**
-         * Generate a set of breadcrumbs for a page.
-         *
-         * @param string|null $name The name of the current page.
-         * @param mixed $params The parameters to pass to the closure for the current page.
-         * @return \Illuminate\Support\Collection The generated breadcrumbs.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route
-         *     doesn't have an associated name.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names
-         *     are) not registered.
-         * @static 
-         */ 
-        public static function generate($name = null, $params = null)
-        {
-            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::generate($name, $params);
-        }
-        
-        /**
-         * Render breadcrumbs for a page with the specified view.
-         *
-         * @param string $view The name of the view to render.
-         * @param string|null $name The name of the current page.
-         * @param mixed $params The parameters to pass to the closure for the current page.
-         * @return \Illuminate\Support\HtmlString The generated HTML.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
-         * @static 
-         */ 
-        public static function view($view, $name = null, $params = null)
-        {
-            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::view($view, $name, $params);
-        }
-        
-        /**
-         * Render breadcrumbs for a page with the default view.
-         *
-         * @param string|null $name The name of the current page.
-         * @param mixed $params The parameters to pass to the closure for the current page.
-         * @return \Illuminate\Support\HtmlString The generated HTML.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
-         * @static 
-         */ 
-        public static function render($name = null, $params = null)
-        {
-            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::render($name, $params);
-        }
-        
-        /**
-         * Get the last breadcrumb for the current page.
-         * 
-         * Optionally pass a
-         *
-         * @return \stdClass|null The breadcrumb for the current page.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-         * @static 
-         */ 
-        public static function current()
-        {
-            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::current();
-        }
-        
-        /**
-         * Set the current route name and parameters to use when calling render() or generate() with no parameters.
-         *
-         * @param string $name The name of the current page.
-         * @param mixed $params The parameters to pass to the closure for the current page.
-         * @return void 
-         * @static 
-         */ 
-        public static function setCurrentRoute($name, $params = null)
-        {
-            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::setCurrentRoute($name, $params);
-        }
-        
-        /**
-         * Clear the previously set route name and parameters to use when calling render() or generate() with no parameters.
-         * 
-         * Next time it will revert to the default behaviour of using the current route from Laravel.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function clearCurrentRoute()
-        {
-            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::clearCurrentRoute();
-        }
-        
-        /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::macro($name, $macro);
-        }
-        
-        /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin)
-        {
-            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::mixin($mixin);
-        }
-        
-        /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::hasMacro($name);
-        }
-         
-    }
- 
-}
-
 namespace Arcanedev\NoCaptcha\Facades { 
 
     class NoCaptcha {
@@ -13091,511 +12908,6 @@ namespace Arcanedev\NoCaptcha\Facades {
         public static function scriptWithCallback($captchas, $callbackName = 'captchaRenderCallback')
         {
             return \Arcanedev\NoCaptcha\NoCaptcha::scriptWithCallback($captchas, $callbackName);
-        }
-         
-    }
- 
-}
-
-namespace Spatie\Html\Facades { 
-
-    class Html {
-        
-        /**
-         * 
-         *
-         * @param string|null $href
-         * @param string|null $text
-         * @return \Spatie\Html\Elements\A 
-         * @static 
-         */ 
-        public static function a($href = null, $contents = null)
-        {
-            return \Spatie\Html\Html::a($href, $contents);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $href
-         * @param string|null $text
-         * @return \Spatie\Html\Elements\I 
-         * @static 
-         */ 
-        public static function i($contents = null)
-        {
-            return \Spatie\Html\Html::i($contents);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $type
-         * @param string|null $text
-         * @return \Spatie\Html\Elements\Button 
-         * @static 
-         */ 
-        public static function button($contents = null, $type = null)
-        {
-            return \Spatie\Html\Html::button($contents, $type);
-        }
-        
-        /**
-         * 
-         *
-         * @param \Illuminate\Support\Collection|\Spatie\Html\iterable|string $classes
-         * @return \Illuminate\Contracts\Support\Htmlable 
-         * @static 
-         */ 
-        public static function class($classes)
-        {
-            return \Spatie\Html\Html::class($classes);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param bool $checked
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function checkbox($name = null, $checked = false, $value = '1')
-        {
-            return \Spatie\Html\Html::checkbox($name, $checked, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param \Spatie\Html\HtmlElement|string|null $contents
-         * @return \Spatie\Html\Elements\Div 
-         * @static 
-         */ 
-        public static function div($contents = null)
-        {
-            return \Spatie\Html\Html::div($contents);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function email($name = '', $value = '')
-        {
-            return \Spatie\Html\Html::email($name, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function date($name = '', $value = '')
-        {
-            return \Spatie\Html\Html::date($name, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function time($name = '', $value = '')
-        {
-            return \Spatie\Html\Html::time($name, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param string $tag
-         * @return \Spatie\Html\Elements\Element 
-         * @static 
-         */ 
-        public static function element($tag)
-        {
-            return \Spatie\Html\Html::element($tag);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $type
-         * @param string|null $name
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function input($type = null, $name = null, $value = null)
-        {
-            return \Spatie\Html\Html::input($type, $name, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param \Spatie\Html\HtmlElement|string|null $legend
-         * @return \Spatie\Html\Elements\Fieldset 
-         * @static 
-         */ 
-        public static function fieldset($legend = null)
-        {
-            return \Spatie\Html\Html::fieldset($legend);
-        }
-        
-        /**
-         * 
-         *
-         * @param string $method
-         * @param string|null $action
-         * @return \Spatie\Html\Elements\Form 
-         * @static 
-         */ 
-        public static function form($method = 'POST', $action = null)
-        {
-            return \Spatie\Html\Html::form($method, $action);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function hidden($name = null, $value = null)
-        {
-            return \Spatie\Html\Html::hidden($name, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $src
-         * @param string|null $alt
-         * @return \Spatie\Html\Elements\Img 
-         * @static 
-         */ 
-        public static function img($src = null, $alt = null)
-        {
-            return \Spatie\Html\Html::img($src, $alt);
-        }
-        
-        /**
-         * 
-         *
-         * @param \Spatie\Html\HtmlElement|\Spatie\Html\iterable|string|null $contents
-         * @param string|null $for
-         * @return \Spatie\Html\Elements\Label 
-         * @static 
-         */ 
-        public static function label($contents = null, $for = null)
-        {
-            return \Spatie\Html\Html::label($contents, $for);
-        }
-        
-        /**
-         * 
-         *
-         * @param \Spatie\Html\HtmlElement|string|null $contents
-         * @return \Spatie\Html\Elements\Legend 
-         * @static 
-         */ 
-        public static function legend($contents = null)
-        {
-            return \Spatie\Html\Html::legend($contents);
-        }
-        
-        /**
-         * 
-         *
-         * @param string $email
-         * @param string|null $text
-         * @return \Spatie\Html\Elements\A 
-         * @static 
-         */ 
-        public static function mailto($email, $text = null)
-        {
-            return \Spatie\Html\Html::mailto($email, $text);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param \Spatie\Html\iterable $options
-         * @param string|\Spatie\Html\iterable|null $value
-         * @return \Spatie\Html\Elements\Select 
-         * @static 
-         */ 
-        public static function multiselect($name = null, $options = array(), $value = null)
-        {
-            return \Spatie\Html\Html::multiselect($name, $options, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $text
-         * @param string|null $value
-         * @param bool $selected
-         * @return \Spatie\Html\Elements\Option 
-         * @static 
-         */ 
-        public static function option($text = null, $value = null, $selected = false)
-        {
-            return \Spatie\Html\Html::option($text, $value, $selected);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function password($name = null)
-        {
-            return \Spatie\Html\Html::password($name);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param bool $checked
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function radio($name = null, $checked = false, $value = null)
-        {
-            return \Spatie\Html\Html::radio($name, $checked, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param \Spatie\Html\iterable $options
-         * @param string|\Spatie\Html\iterable|null $value
-         * @return \Spatie\Html\Elements\Select 
-         * @static 
-         */ 
-        public static function select($name = null, $options = array(), $value = null)
-        {
-            return \Spatie\Html\Html::select($name, $options, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param \Spatie\Html\HtmlElement|string|null $contents
-         * @return \Spatie\Html\Elements\Span 
-         * @static 
-         */ 
-        public static function span($contents = null)
-        {
-            return \Spatie\Html\Html::span($contents);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $text
-         * @return \Spatie\Html\Elements\Button 
-         * @static 
-         */ 
-        public static function submit($text = null)
-        {
-            return \Spatie\Html\Html::submit($text);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $text
-         * @return \Spatie\Html\Elements\Button 
-         * @static 
-         */ 
-        public static function reset($text = null)
-        {
-            return \Spatie\Html\Html::reset($text);
-        }
-        
-        /**
-         * 
-         *
-         * @param string $number
-         * @param string|null $text
-         * @return \Spatie\Html\Elements\A 
-         * @static 
-         */ 
-        public static function tel($number, $text = null)
-        {
-            return \Spatie\Html\Html::tel($number, $text);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function text($name = null, $value = null)
-        {
-            return \Spatie\Html\Html::text($name, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @return \Spatie\Html\Elements\File 
-         * @static 
-         */ 
-        public static function file($name = null)
-        {
-            return \Spatie\Html\Html::file($name);
-        }
-        
-        /**
-         * 
-         *
-         * @param string|null $name
-         * @param string|null $value
-         * @return \Spatie\Html\Elements\Textarea 
-         * @static 
-         */ 
-        public static function textarea($name = null, $value = null)
-        {
-            return \Spatie\Html\Html::textarea($name, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @return \Spatie\Html\Elements\Input 
-         * @static 
-         */ 
-        public static function token()
-        {
-            return \Spatie\Html\Html::token();
-        }
-        
-        /**
-         * 
-         *
-         * @param \ArrayAccess|array $model
-         * @return $this 
-         * @static 
-         */ 
-        public static function model($model)
-        {
-            return \Spatie\Html\Html::model($model);
-        }
-        
-        /**
-         * 
-         *
-         * @param \ArrayAccess|array $model
-         * @param string|null $method
-         * @param string|null $action
-         * @return \Spatie\Html\Elements\Form 
-         * @static 
-         */ 
-        public static function modelForm($model, $method = 'POST', $action = null)
-        {
-            return \Spatie\Html\Html::modelForm($model, $method, $action);
-        }
-        
-        /**
-         * 
-         *
-         * @return $this 
-         * @static 
-         */ 
-        public static function endModel()
-        {
-            return \Spatie\Html\Html::endModel();
-        }
-        
-        /**
-         * 
-         *
-         * @return \Illuminate\Contracts\Support\Htmlable 
-         * @static 
-         */ 
-        public static function closeModelForm()
-        {
-            return \Spatie\Html\Html::closeModelForm();
-        }
-        
-        /**
-         * Retrieve the value from the current session or assigned model. This is
-         * a public alias for `old`.
-         *
-         * @param string $name
-         * @param mixed $value
-         * @return mixed 
-         * @static 
-         */ 
-        public static function value($name, $default = null)
-        {
-            return \Spatie\Html\Html::value($name, $default);
-        }
-        
-        /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-            \Spatie\Html\Html::macro($name, $macro);
-        }
-        
-        /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin)
-        {
-            \Spatie\Html\Html::mixin($mixin);
-        }
-        
-        /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-            return \Spatie\Html\Html::hasMacro($name);
         }
          
     }
@@ -14228,6 +13540,725 @@ namespace Jaybizzle\LaravelCrawlerDetect\Facades {
         public static function getMatches()
         {
             return \Jaybizzle\CrawlerDetect\CrawlerDetect::getMatches();
+        }
+         
+    }
+ 
+}
+
+namespace DaveJamesMiller\Breadcrumbs\Facades { 
+
+    class Breadcrumbs {
+        
+        /**
+         * Register a breadcrumb-generating callback for a page.
+         *
+         * @param string $name The name of the page.
+         * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
+         *     accept additional parameters.
+         * @return void 
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
+         *     used.
+         * @static 
+         */ 
+        public static function for($name, $callback)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::for($name, $callback);
+        }
+        
+        /**
+         * Register a breadcrumb-generating callback for a page.
+         * 
+         * For backwards-compatibility with v5.0.0 and below.
+         *
+         * @see self::for()
+         * @param string $name The name of the page.
+         * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
+         *     accept additional parameters.
+         * @return void 
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
+         *     used.
+         * @static 
+         */ 
+        public static function register($name, $callback)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::register($name, $callback);
+        }
+        
+        /**
+         * Register a closure to call before generating breadcrumbs for the current page.
+         * 
+         * For example, this can be used to always prepend the homepage without needing to manually add it to each page.
+         *
+         * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
+         * @return void 
+         * @static 
+         */ 
+        public static function before($callback)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::before($callback);
+        }
+        
+        /**
+         * Register a closure to call after generating breadcrumbs for the current page.
+         * 
+         * For example, this can be used to append the current page number when using pagination.
+         *
+         * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
+         * @return void 
+         * @static 
+         */ 
+        public static function after($callback)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::after($callback);
+        }
+        
+        /**
+         * Check if a breadcrumb with the given name exists.
+         * 
+         * If no name is given, defaults to the current route name.
+         *
+         * @param string|null $name The page name.
+         * @return bool Whether there is a registered callback with that name.
+         * @static 
+         */ 
+        public static function exists($name = null)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::exists($name);
+        }
+        
+        /**
+         * Generate a set of breadcrumbs for a page.
+         *
+         * @param string|null $name The name of the current page.
+         * @param mixed $params The parameters to pass to the closure for the current page.
+         * @return \Illuminate\Support\Collection The generated breadcrumbs.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route
+         *     doesn't have an associated name.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names
+         *     are) not registered.
+         * @static 
+         */ 
+        public static function generate($name = null, $params = null)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::generate($name, $params);
+        }
+        
+        /**
+         * Render breadcrumbs for a page with the specified view.
+         *
+         * @param string $view The name of the view to render.
+         * @param string|null $name The name of the current page.
+         * @param mixed $params The parameters to pass to the closure for the current page.
+         * @return \Illuminate\Support\HtmlString The generated HTML.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+         * @static 
+         */ 
+        public static function view($view, $name = null, $params = null)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::view($view, $name, $params);
+        }
+        
+        /**
+         * Render breadcrumbs for a page with the default view.
+         *
+         * @param string|null $name The name of the current page.
+         * @param mixed $params The parameters to pass to the closure for the current page.
+         * @return \Illuminate\Support\HtmlString The generated HTML.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+         * @static 
+         */ 
+        public static function render($name = null, $params = null)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::render($name, $params);
+        }
+        
+        /**
+         * Get the last breadcrumb for the current page.
+         * 
+         * Optionally pass a
+         *
+         * @return \stdClass|null The breadcrumb for the current page.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @static 
+         */ 
+        public static function current()
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::current();
+        }
+        
+        /**
+         * Set the current route name and parameters to use when calling render() or generate() with no parameters.
+         *
+         * @param string $name The name of the current page.
+         * @param mixed $params The parameters to pass to the closure for the current page.
+         * @return void 
+         * @static 
+         */ 
+        public static function setCurrentRoute($name, $params = null)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::setCurrentRoute($name, $params);
+        }
+        
+        /**
+         * Clear the previously set route name and parameters to use when calling render() or generate() with no parameters.
+         * 
+         * Next time it will revert to the default behaviour of using the current route from Laravel.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function clearCurrentRoute()
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::clearCurrentRoute();
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::mixin($mixin);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::hasMacro($name);
+        }
+         
+    }
+ 
+}
+
+namespace Spatie\Html\Facades { 
+
+    class Html {
+        
+        /**
+         * 
+         *
+         * @param string|null $href
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\A 
+         * @static 
+         */ 
+        public static function a($href = null, $contents = null)
+        {
+            return \Spatie\Html\Html::a($href, $contents);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $href
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\I 
+         * @static 
+         */ 
+        public static function i($contents = null)
+        {
+            return \Spatie\Html\Html::i($contents);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $type
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\Button 
+         * @static 
+         */ 
+        public static function button($contents = null, $type = null)
+        {
+            return \Spatie\Html\Html::button($contents, $type);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Illuminate\Support\Collection|\Spatie\Html\iterable|string $classes
+         * @return \Illuminate\Contracts\Support\Htmlable 
+         * @static 
+         */ 
+        public static function class($classes)
+        {
+            return \Spatie\Html\Html::class($classes);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param bool $checked
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function checkbox($name = null, $checked = false, $value = '1')
+        {
+            return \Spatie\Html\Html::checkbox($name, $checked, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|null $contents
+         * @return \Spatie\Html\Elements\Div 
+         * @static 
+         */ 
+        public static function div($contents = null)
+        {
+            return \Spatie\Html\Html::div($contents);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function email($name = '', $value = '')
+        {
+            return \Spatie\Html\Html::email($name, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function date($name = '', $value = '')
+        {
+            return \Spatie\Html\Html::date($name, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function time($name = '', $value = '')
+        {
+            return \Spatie\Html\Html::time($name, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $tag
+         * @return \Spatie\Html\Elements\Element 
+         * @static 
+         */ 
+        public static function element($tag)
+        {
+            return \Spatie\Html\Html::element($tag);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $type
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function input($type = null, $name = null, $value = null)
+        {
+            return \Spatie\Html\Html::input($type, $name, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|null $legend
+         * @return \Spatie\Html\Elements\Fieldset 
+         * @static 
+         */ 
+        public static function fieldset($legend = null)
+        {
+            return \Spatie\Html\Html::fieldset($legend);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $method
+         * @param string|null $action
+         * @return \Spatie\Html\Elements\Form 
+         * @static 
+         */ 
+        public static function form($method = 'POST', $action = null)
+        {
+            return \Spatie\Html\Html::form($method, $action);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function hidden($name = null, $value = null)
+        {
+            return \Spatie\Html\Html::hidden($name, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $src
+         * @param string|null $alt
+         * @return \Spatie\Html\Elements\Img 
+         * @static 
+         */ 
+        public static function img($src = null, $alt = null)
+        {
+            return \Spatie\Html\Html::img($src, $alt);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|\Spatie\Html\iterable|string|null $contents
+         * @param string|null $for
+         * @return \Spatie\Html\Elements\Label 
+         * @static 
+         */ 
+        public static function label($contents = null, $for = null)
+        {
+            return \Spatie\Html\Html::label($contents, $for);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|null $contents
+         * @return \Spatie\Html\Elements\Legend 
+         * @static 
+         */ 
+        public static function legend($contents = null)
+        {
+            return \Spatie\Html\Html::legend($contents);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $email
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\A 
+         * @static 
+         */ 
+        public static function mailto($email, $text = null)
+        {
+            return \Spatie\Html\Html::mailto($email, $text);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param \Spatie\Html\iterable $options
+         * @param string|\Spatie\Html\iterable|null $value
+         * @return \Spatie\Html\Elements\Select 
+         * @static 
+         */ 
+        public static function multiselect($name = null, $options = array(), $value = null)
+        {
+            return \Spatie\Html\Html::multiselect($name, $options, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $text
+         * @param string|null $value
+         * @param bool $selected
+         * @return \Spatie\Html\Elements\Option 
+         * @static 
+         */ 
+        public static function option($text = null, $value = null, $selected = false)
+        {
+            return \Spatie\Html\Html::option($text, $value, $selected);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function password($name = null)
+        {
+            return \Spatie\Html\Html::password($name);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param bool $checked
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function radio($name = null, $checked = false, $value = null)
+        {
+            return \Spatie\Html\Html::radio($name, $checked, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param \Spatie\Html\iterable $options
+         * @param string|\Spatie\Html\iterable|null $value
+         * @return \Spatie\Html\Elements\Select 
+         * @static 
+         */ 
+        public static function select($name = null, $options = array(), $value = null)
+        {
+            return \Spatie\Html\Html::select($name, $options, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Spatie\Html\HtmlElement|string|null $contents
+         * @return \Spatie\Html\Elements\Span 
+         * @static 
+         */ 
+        public static function span($contents = null)
+        {
+            return \Spatie\Html\Html::span($contents);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\Button 
+         * @static 
+         */ 
+        public static function submit($text = null)
+        {
+            return \Spatie\Html\Html::submit($text);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\Button 
+         * @static 
+         */ 
+        public static function reset($text = null)
+        {
+            return \Spatie\Html\Html::reset($text);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $number
+         * @param string|null $text
+         * @return \Spatie\Html\Elements\A 
+         * @static 
+         */ 
+        public static function tel($number, $text = null)
+        {
+            return \Spatie\Html\Html::tel($number, $text);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function text($name = null, $value = null)
+        {
+            return \Spatie\Html\Html::text($name, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @return \Spatie\Html\Elements\File 
+         * @static 
+         */ 
+        public static function file($name = null)
+        {
+            return \Spatie\Html\Html::file($name);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|null $name
+         * @param string|null $value
+         * @return \Spatie\Html\Elements\Textarea 
+         * @static 
+         */ 
+        public static function textarea($name = null, $value = null)
+        {
+            return \Spatie\Html\Html::textarea($name, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @return \Spatie\Html\Elements\Input 
+         * @static 
+         */ 
+        public static function token()
+        {
+            return \Spatie\Html\Html::token();
+        }
+        
+        /**
+         * 
+         *
+         * @param \ArrayAccess|array $model
+         * @return $this 
+         * @static 
+         */ 
+        public static function model($model)
+        {
+            return \Spatie\Html\Html::model($model);
+        }
+        
+        /**
+         * 
+         *
+         * @param \ArrayAccess|array $model
+         * @param string|null $method
+         * @param string|null $action
+         * @return \Spatie\Html\Elements\Form 
+         * @static 
+         */ 
+        public static function modelForm($model, $method = 'POST', $action = null)
+        {
+            return \Spatie\Html\Html::modelForm($model, $method, $action);
+        }
+        
+        /**
+         * 
+         *
+         * @return $this 
+         * @static 
+         */ 
+        public static function endModel()
+        {
+            return \Spatie\Html\Html::endModel();
+        }
+        
+        /**
+         * 
+         *
+         * @return \Illuminate\Contracts\Support\Htmlable 
+         * @static 
+         */ 
+        public static function closeModelForm()
+        {
+            return \Spatie\Html\Html::closeModelForm();
+        }
+        
+        /**
+         * Retrieve the value from the current session or assigned model. This is
+         * a public alias for `old`.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @return mixed 
+         * @static 
+         */ 
+        public static function value($name, $default = null)
+        {
+            return \Spatie\Html\Html::value($name, $default);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+            \Spatie\Html\Html::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin)
+        {
+            \Spatie\Html\Html::mixin($mixin);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+            return \Spatie\Html\Html::hasMacro($name);
         }
          
     }
@@ -15805,11 +15836,11 @@ namespace  {
              *
              * @param string $column
              * @param string $operator
-             * @param string $value
+             * @param mixed $value
              * @return \Illuminate\Database\Query\Builder|static 
              * @static 
              */ 
-            public static function orWhereDate($column, $operator, $value)
+            public static function orWhereDate($column, $operator, $value = null)
             {    
                 return \Illuminate\Database\Query\Builder::orWhereDate($column, $operator, $value);
             }
@@ -16786,17 +16817,17 @@ namespace  {
 
     class Socialite extends \Laravel\Socialite\Facades\Socialite {}
 
-    class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
-
     class Captcha extends \Arcanedev\NoCaptcha\Facades\NoCaptcha {}
-
-    class Html extends \Spatie\Html\Facades\Html {}
 
     class Uuid extends \Webpatser\Uuid\Uuid {}
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Crawler extends \Jaybizzle\LaravelCrawlerDetect\Facades\LaravelCrawlerDetect {}
+
+    class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
+
+    class Html extends \Spatie\Html\Facades\Html {}
 
     class LogViewer extends \Arcanedev\LogViewer\Facades\LogViewer {}
  

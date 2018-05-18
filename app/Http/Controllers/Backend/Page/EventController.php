@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers\Backend\Page;
 
+use App\Http\Requests\Backend\PageRequest\EventRequest;
 use App\Models\PageModels\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class EventController extends Controller
 {
+    protected $event;
+
+    public function __construct(Event $event)
+    {
+        $this->event = $event;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +23,8 @@ class EventController extends Controller
      */
     public function index()
     {
-    	$event = Event::where('active', 1)->get();
-        return view('backend.event.index');
+    	$data = $this->event->where('active', 1)->orderBy('created_at','desc')->get();
+        return view('backend.event.index',compact('data'));
     }
 
     /**
@@ -26,7 +34,6 @@ class EventController extends Controller
      */
     public function create()
     {
-    	$event = Event::pluck('name', 'id');
         return view('backend.event.create',compact('event'));
     }
 
@@ -36,9 +43,16 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+		$data = $this->validate($request,[
+			'name' => 'required|min:6|max:20|unique:events',
+			'date' => 'required|data',
+			'text' =>  'required|min:6|max:255',
+		]);
+		//dd($data);
+        $this->event->save($data);
+		return redirect()->route('admin.event')->withFlashSuccess('Event Upload Succesfull');
     }
 
     /**
@@ -49,7 +63,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = $this->event->where('id','=',$id)->firstOrFail();
+        return view('backend.event.show',compact('data'));
     }
 
     /**
@@ -60,7 +75,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = $this->event->where('id','=',$id)->firstOrFail();
+        return view('backend.event.edit',compact('data'));
     }
 
     /**

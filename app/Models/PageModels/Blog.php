@@ -15,7 +15,7 @@ class Blog extends Model
 	/** Relation */
 
 	public function category() {
-		return $this->belongsTo('App\Models\PageModels\Category');
+		return $this->belongsToMany('App\Models\PageModels\Category');
 	}
 
 	/**
