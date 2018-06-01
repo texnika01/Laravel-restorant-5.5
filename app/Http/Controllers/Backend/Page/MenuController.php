@@ -51,15 +51,15 @@ class MenuController extends Controller {
 
 		$data = $request->validate([
 			'title' => 'required|min:6|unique:menus',
-			'menu' => 'required|min:6', '
-			price' => 'required|numeric|between:0,99.99',
+			'menu' => 'required|min:6',
+			'price' => 'required|numeric|between:0,99.99',
 			'image' => 'required|mimes:jpeg',
 			]);
 
 		//dd($data);
 		$data = $request->except('image');
 		$fileName = rand(11111111, 99999999) . '.' . $request->file('image')->getClientOriginalExtension(); // renameing image
-		$request->file('image')->move(public_path('upload/texts'), $fileName);
+		$request->file('image')->move(public_path('upload/menu'), $fileName);
 		$data['image'] = $fileName;
 		$article = $this->menu->create($data);
 		$article->category()->attach($request->input('category'));

@@ -29,8 +29,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = $this->category->where('active',1)->orderBy('created_at','desc')->get();
-        return view('backend.category.index');
+        $data = $this->category->orderBy('created_at','asc')->get();
+        return view('backend.category.index',compact('data'));
     }
 
     /**

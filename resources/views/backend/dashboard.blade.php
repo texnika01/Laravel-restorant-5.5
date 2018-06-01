@@ -10,7 +10,7 @@
                 <div class="h1 text-muted text-right mb-4">
                     <i class="icon-globe"></i>
                 </div>
-                <div class="h4 mb-0">10</div>
+                <div class="h4 mb-0">{{$menu->count()}}</div>
                 <small class="text-muted text-uppercase font-weight-bold">menu</small>
                 <div class="progress progress-xs mt-3 mb-0">
                     <div class="progress-bar bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
@@ -27,7 +27,7 @@
                 <div class="h1 text-muted text-right mb-4">
                     <i class="icon-music-tone "></i>
                 </div>
-                <div class="h4 mb-0">20</div>
+                <div class="h4 mb-0">{{$event->count()}}</div>
                 <small class="text-muted text-uppercase font-weight-bold">Events</small>
                 <div class="progress progress-xs mt-3 mb-0">
                     <div class="progress-bar bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
@@ -44,7 +44,7 @@
                 <div class="h1 text-muted text-right mb-4">
                     <i class="icon-music-tone "></i>
                 </div>
-                <div class="h4 mb-0">20</div>
+                <div class="h4 mb-0">{{$blog->count()}}</div>
                 <small class="text-muted text-uppercase font-weight-bold">Blog post</small>
                 <div class="progress progress-xs mt-3 mb-0">
                     <div class="progress-bar bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
