@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.21 on 2018-05-11 16:34:54.
+ * Generated for Laravel 5.6.21 on 2018-07-27 19:55:02.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3276,98 +3276,6 @@ namespace Illuminate\Support\Facades {
         public static function getQueuedCookies()
         {
             return \Illuminate\Cookie\CookieJar::getQueuedCookies();
-        }
-         
-    }
-
-    class Crypt {
-        
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool 
-         * @static 
-         */ 
-        public static function supported($key, $cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-        
-        /**
-         * Create a new encryption key for the given cipher.
-         *
-         * @param string $cipher
-         * @return string 
-         * @static 
-         */ 
-        public static function generateKey($cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::generateKey($cipher);
-        }
-        
-        /**
-         * Encrypt the given value.
-         *
-         * @param mixed $value
-         * @param bool $serialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */ 
-        public static function encrypt($value, $serialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::encrypt($value, $serialize);
-        }
-        
-        /**
-         * Encrypt a string without serialization.
-         *
-         * @param string $value
-         * @return string 
-         * @static 
-         */ 
-        public static function encryptString($value)
-        {
-            return \Illuminate\Encryption\Encrypter::encryptString($value);
-        }
-        
-        /**
-         * Decrypt the given value.
-         *
-         * @param mixed $payload
-         * @param bool $unserialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */ 
-        public static function decrypt($payload, $unserialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::decrypt($payload, $unserialize);
-        }
-        
-        /**
-         * Decrypt the given string without unserialization.
-         *
-         * @param string $payload
-         * @return string 
-         * @static 
-         */ 
-        public static function decryptString($payload)
-        {
-            return \Illuminate\Encryption\Encrypter::decryptString($payload);
-        }
-        
-        /**
-         * Get the encryption key.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getKey()
-        {
-            return \Illuminate\Encryption\Encrypter::getKey();
         }
          
     }
@@ -12914,14 +12822,6 @@ namespace Arcanedev\NoCaptcha\Facades {
  
 }
 
-namespace Webpatser\Uuid { 
-
-    class Uuid {
-         
-    }
- 
-}
-
 namespace Barryvdh\Debugbar { 
 
     class Facade {
@@ -13470,82 +13370,6 @@ namespace Barryvdh\Debugbar {
  
 }
 
-namespace Jaybizzle\LaravelCrawlerDetect\Facades { 
-
-    class LaravelCrawlerDetect {
-        
-        /**
-         * Compile the regex patterns into one regex string.
-         *
-         * @param array
-         * @return string 
-         * @static 
-         */ 
-        public static function compileRegex($patterns)
-        {
-            return \Jaybizzle\CrawlerDetect\CrawlerDetect::compileRegex($patterns);
-        }
-        
-        /**
-         * Set HTTP headers.
-         *
-         * @param array|null $httpHeaders
-         * @static 
-         */ 
-        public static function setHttpHeaders($httpHeaders)
-        {
-            return \Jaybizzle\CrawlerDetect\CrawlerDetect::setHttpHeaders($httpHeaders);
-        }
-        
-        /**
-         * Return user agent headers.
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function getUaHttpHeaders()
-        {
-            return \Jaybizzle\CrawlerDetect\CrawlerDetect::getUaHttpHeaders();
-        }
-        
-        /**
-         * Set the user agent.
-         *
-         * @param string $userAgent
-         * @static 
-         */ 
-        public static function setUserAgent($userAgent)
-        {
-            return \Jaybizzle\CrawlerDetect\CrawlerDetect::setUserAgent($userAgent);
-        }
-        
-        /**
-         * Check user agent string against the regex.
-         *
-         * @param string|null $userAgent
-         * @return bool 
-         * @static 
-         */ 
-        public static function isCrawler($userAgent = null)
-        {
-            return \Jaybizzle\CrawlerDetect\CrawlerDetect::isCrawler($userAgent);
-        }
-        
-        /**
-         * Return the matches.
-         *
-         * @return string|null 
-         * @static 
-         */ 
-        public static function getMatches()
-        {
-            return \Jaybizzle\CrawlerDetect\CrawlerDetect::getMatches();
-        }
-         
-    }
- 
-}
-
 namespace DaveJamesMiller\Breadcrumbs\Facades { 
 
     class Breadcrumbs {
@@ -13754,6 +13578,82 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
         public static function hasMacro($name)
         {
             return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::hasMacro($name);
+        }
+         
+    }
+ 
+}
+
+namespace Jaybizzle\LaravelCrawlerDetect\Facades { 
+
+    class LaravelCrawlerDetect {
+        
+        /**
+         * Compile the regex patterns into one regex string.
+         *
+         * @param array
+         * @return string 
+         * @static 
+         */ 
+        public static function compileRegex($patterns)
+        {
+            return \Jaybizzle\CrawlerDetect\CrawlerDetect::compileRegex($patterns);
+        }
+        
+        /**
+         * Set HTTP headers.
+         *
+         * @param array|null $httpHeaders
+         * @static 
+         */ 
+        public static function setHttpHeaders($httpHeaders)
+        {
+            return \Jaybizzle\CrawlerDetect\CrawlerDetect::setHttpHeaders($httpHeaders);
+        }
+        
+        /**
+         * Return user agent headers.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getUaHttpHeaders()
+        {
+            return \Jaybizzle\CrawlerDetect\CrawlerDetect::getUaHttpHeaders();
+        }
+        
+        /**
+         * Set the user agent.
+         *
+         * @param string $userAgent
+         * @static 
+         */ 
+        public static function setUserAgent($userAgent)
+        {
+            return \Jaybizzle\CrawlerDetect\CrawlerDetect::setUserAgent($userAgent);
+        }
+        
+        /**
+         * Check user agent string against the regex.
+         *
+         * @param string|null $userAgent
+         * @return bool 
+         * @static 
+         */ 
+        public static function isCrawler($userAgent = null)
+        {
+            return \Jaybizzle\CrawlerDetect\CrawlerDetect::isCrawler($userAgent);
+        }
+        
+        /**
+         * Return the matches.
+         *
+         * @return string|null 
+         * @static 
+         */ 
+        public static function getMatches()
+        {
+            return \Jaybizzle\CrawlerDetect\CrawlerDetect::getMatches();
         }
          
     }
@@ -14265,6 +14165,14 @@ namespace Spatie\Html\Facades {
  
 }
 
+namespace Webpatser\Uuid { 
+
+    class Uuid {
+         
+    }
+ 
+}
+
 namespace Arcanedev\LogViewer\Facades { 
 
     class LogViewer {
@@ -14542,8 +14450,6 @@ namespace  {
     class Config extends \Illuminate\Support\Facades\Config {}
 
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
-
-    class Crypt extends \Illuminate\Support\Facades\Crypt {}
 
     class DB extends \Illuminate\Support\Facades\DB {}
 
@@ -16819,15 +16725,15 @@ namespace  {
 
     class Captcha extends \Arcanedev\NoCaptcha\Facades\NoCaptcha {}
 
-    class Uuid extends \Webpatser\Uuid\Uuid {}
-
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
-
-    class Crawler extends \Jaybizzle\LaravelCrawlerDetect\Facades\LaravelCrawlerDetect {}
 
     class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
 
+    class Crawler extends \Jaybizzle\LaravelCrawlerDetect\Facades\LaravelCrawlerDetect {}
+
     class Html extends \Spatie\Html\Facades\Html {}
+
+    class Uuid extends \Webpatser\Uuid\Uuid {}
 
     class LogViewer extends \Arcanedev\LogViewer\Facades\LogViewer {}
  

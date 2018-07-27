@@ -24,10 +24,10 @@ class MenuRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:6',
-            'menu' => 'required|min:6',
-            'price' => 'required',
-            'image' => 'required',
+            'title' => 'required|min:6|unique:menus',
+			'menu' => 'required|min:6',
+			'price' => 'required|numeric|between:0,99.99',
+			'image' => 'required|mimes:jpeg',
         ];
     }
 }
