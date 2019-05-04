@@ -49,14 +49,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
         $data = $this->validate($request,[
 			'name' => 'required|min:6|max:20|unique:categories',
 			'description' => 'required|min:6|max:255',
 		]);
-		dd($data);
-        $this->category->save($data);
+		//dd($data);
+        $this->category->create($data);
         return redirect()->route('admin.category')->withFlashSuccess('Upload successful.');
     }
 

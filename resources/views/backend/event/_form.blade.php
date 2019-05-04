@@ -12,7 +12,7 @@
 <!-- Date Form Input -->
 <div class="form-group {{ $errors->has('date') ? ' has-error' : ''}}">
     {{ html()->label('Date :') }}
-    {{ html()->text('date', null )->class('form-control')->placeholder('Date') }}
+    {{ html()->input('date', 'date',null )->class('form-control')->placeholder('Date') }}
     @if($errors->has('date'))
         <span class="help-block">
             {{$errors->first('date')}}
@@ -27,6 +27,17 @@
     @if($errors->has('text'))
         <span class="help-block">
             {{$errors->first('text')}}
+        </span>
+    @endif
+</div>
+
+<!-- Text Form Input -->
+<div class="form-group {{ $errors->has('text') ? ' has-error' : ''}}">
+    {{ html()->label('Image :') }}
+    {{ html()->input('file', 'image', null )->class('form-control')->placeholder('Image') }}
+    @if($errors->has('image'))
+        <span class="help-block">
+            {{$errors->first('image')}}
         </span>
     @endif
 </div>

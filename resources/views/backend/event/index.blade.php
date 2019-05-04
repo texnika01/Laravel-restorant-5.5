@@ -27,9 +27,9 @@
                                 <th>Name</th>
                                 <th>Data</th>
                                 <th>Text</th>
+                                <th>Image</th>
                                 <th>Active</th>
                                 <th>Created At</th>
-                                <th>Active</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -38,15 +38,16 @@
                             <tr>
                                 <th scope="row">{{$result->id}}</th>
                                 <td>{{$result->name}}</td>
-                                <td>{{$result->data}}</td>
+                                <td>{{$result->date}}</td>
                                 <td>{{$result->text}}</td>
-                                <td>{{$result->active}}</td>
-                                <td>{{$result->created_at}}</td>
+                                <td>{{$result->image}}</td>
                                 @if($result->active === 1)
                                     <td><h5><span class="badge badge-pill badge-success">{{$result->active}}</span></h5></td>
                                 @elseif($result->active === 0)
                                     <td><h5><span class="badge badge-pill badge-danger">{{$result->active}}</span></h5></td>
                                 @endif
+                                <td>{{$result->created_at}}</td>
+                                
                                 <td>
                                     <a href="#" type="button" class="btn btn-outline-success ml-1">
                                         <i class="fas fa-plus"></i>

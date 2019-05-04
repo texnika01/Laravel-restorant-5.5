@@ -9,7 +9,7 @@ class Menu extends Model
     protected $table = 'menus';
 
     protected $fillable = [
-		'title', 'menu', 'image', 'category_id', 'active'
+		'id','title', 'menu', 'image', 'menu_category', 'active'
 	];
 
     /** Relations */
@@ -19,7 +19,7 @@ class Menu extends Model
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function category() {
-		return $this->belongsToMany('App\Models\PageModels\Category');
+	public function menucategory() {
+		return $this->belongsToMany('App\Models\PageModels\Menucategory');
 	}
 }

@@ -23,7 +23,6 @@
                             <table class="table">
                             <thead class="thead-inverse">
                             <tr>
-                                <th>#</th>
                                 <th>Title</th>
                                 <th>Category</th>
                                 <th>Price</th>
@@ -36,9 +35,8 @@
                             <tbody>
                             @foreach($data as $result)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>{{ $result->title }}</td>
-                                <td>{{ $result->category_id }}</td>
+                                <th scope="row">{{ $result->title }}</th>
+                                <td>{{ $result->menu_category }}</td>
                                 <td>{{ $result->price }} $</td>
                                 <td>{{ $result->image }}</td>
                                 <td>{{ $result->menu }}</td>

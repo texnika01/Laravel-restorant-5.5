@@ -13,6 +13,15 @@ Route::post('menu/store', 'Page\MenuController@store')->name('menu.store');
 Route::get('menu/{id}/edit', 'Page\MenuController@edit')->name('menu.edit');
 Route::post('menu/{id}', 'Page\MenuController@update')->name('menu.update');
 
+/** Route menu category*/
+Route::get('menu_category','Page\MenucategoryController@index')->name('menu_category');
+Route::get('menu_category/{id}/show', 'Page\MenucategoryController@show')->name('menu_category.show');
+Route::get('menu_category/create', 'Page\MenucategoryController@create')->name('menu_category.create');
+Route::post('menu_category/store', 'Page\MenucategoryController@store')->name('menu_category.store');
+Route::get('menu_category/{id}/edit', 'Page\MenucategoryController@edit')->name('menu_category.edit');
+Route::post('menu_category/{id}', 'Page\MenucategoryController@update')->name('menu_category.update');
+
+
 /** Route event */
 Route::get('event','Page\EventController@index')->name('event');
 Route::get('event/{id}/show', 'Page\EventController@show')->name('event.show');

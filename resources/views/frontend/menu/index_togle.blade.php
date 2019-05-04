@@ -15,159 +15,27 @@
                 <!--Article Content -->
                 <div class="article-content clearfix">
                     <!-- Collapsed Menu -->
-                    <h3 class="toggle-header active"><a href="#">Starters</a></h3>
-                    <div class="toggle-panel active centered">
+                    @if($menucat !== null)
+                    @foreach($menucat as $resultcat)
+                    <h3 class="toggle-header"><a href="#">{{ $resultcat->name }}</a></h3>
+                    <div class="toggle-panel centered">
+                    @if($menu !== null)
+                                @foreach($menu as $result)
+                                    @if($resultcat->id  ==  $result->menu_category)
                         <h3>Grilled Asparagus &amp; Bruschetta</h3>
                         <p><em>Proin sed mauris eu quam hendrerit consequat sit amet eget mi</em></p>
                         <h4>8.40, -</h4>
                         <hr>
-                        <h3>Carpaccio di manzo</h3>
-                        <p><em>Nunc ullamcorper gravida magna vitae consectetur. Sed pulvinar feugiat
-                                facilisis. Mauris eget justo mauris.</em></p>
-                        <h4>5.00, -</h4>
-                        <hr>
-                        <h3>Mini Smoked Salmon</h3>
-                        <p><em>Nulla vulputate nunc vitae augue tempor, vel venenatis quam pretium.
-                                Mauris elementum dolor velit</em></p>
-                        <h4>7.50, -</h4>
-                        <hr>
-                        <h3>Salmon Tartare</h3>
-                        <p><em>Ut neque ligula, placerat et purus sit amet, malesuada interdum purus</em></p>
-                        <h4>12.00, -</h4>
-                        <hr>
-                        <h3>Bresaola salad</h3>
-                        <p><em>Quisque at egestas sapien. Maecenas sit amet sem ac nibh dapibus feugiat</em></p>
-                        <h4>6.30, -</h4>
-                        <hr>
-                        <h3>Sweet Potato Fries, Garlic Aioli</h3>
-                        <p><em>Praesent nulla massa, imperdiet vel lacus et, tincidunt ullamcorper justo.
-                                Nullam a tellus ligula</em></p>
-                        <h4>7.60, -</h4>
+                        @endif
+                                @endforeach
+                            @else
+                                <p class="dish-details">Menu its empty</p>
+                            @endif
                     </div>
-
-                    <!-- Collapsed Menu -->
-                    <h3 class="toggle-header"><a href="#">Mains</a></h3>
-                    <div class="toggle-panel centered">
-                        <h3>Chicken and prosciutto parmigiana</h3>
-                        <p><em>Praesent auctor ante eu aliquet posuere. Cras a mauris at erat pulvinar pharetra sed vel felis</em></p>
-                        <h4>12.40, -</h4>
-                        <hr>
-                        <h3>Salmon with white bean mash</h3>
-                        <p><em>Sed at est non metus ullamcorper facilisis vel tristique felis. Donec faucibus dolor leo</em></p>
-                        <h4>15.00, -</h4>
-                        <hr>
-                        <h3>Butter chicken with naan</h3>
-                        <p><em>Sed consequat vel ipsum in sollicitudin. Etiam molestie, urna id placerat bibendum</em></p>
-                        <h4>14.50, -</h4>
-                        <hr>
-                        <h3>French roast chicken with whole garlic</h3>
-                        <p><em>Nulla tellus velit, ultricies ut metus ut, aliquet venenatis libero. Maecenas dapibus lorem<br></em></p>
-                        <h4>17.00, -</h4>
-                        <hr>
-                        <h3>Salmon with black bean noodles</h3>
-                        <p><em>Donec condimentum nunc ut ligula convallis, ut posuere leo adipiscing</em></p>
-                        <h4>16.20, -</h4>
-                        <hr>
-                        <h3>Slow-cooked lemon and thyme lamb shanks</h3>
-                        <p><em>Donec condimentum nunc ut ligula convallis, ut posuere leo adipiscing</em></p>
-                        <h4>19.00, -</h4>
-                        <hr>
-                        <h3>Tandoori chicken puffs</h3>
-                        <p><em>Estibulum sit amet velit sit amet ante sodales euismod sit amet a mi</em></p>
-                        <h4>18.50, -</h4>
-                        <hr>
-                        <h3>Spiced lamb cutlets with garlic tomato salad</h3>
-                        <p><em>Vivamus imperdiet metus vitae lacus mattis, ac blandit tortor commodo</em></p>
-                        <h4>11.10, -</h4>
-                        <hr>
-                        <h3>Chilli pork and basil stir-fry</h3>
-                        <p><em>Phasellus cursus turpis et metus porttitor, sed feugiat justo posuere</em></p>
-                        <h4>22.50, -</h4>
-                    </div>
-
-                    <!-- Collapsed Menu -->
-                    <h3 class="toggle-header"><a href="#">Desserts</a></h3>
-                    <div class="toggle-panel centered">
-                        <h3>Prune &amp; Armagnac cake</h3>
-                        <p><em>Donec condimentum nunc ut ligula convallis</em></p>
-                        <h4>6.20, -</h4>
-                        <hr>
-                        <h3>Mixed nut &amp; honey baklava</h3>
-                        <p><em>Donec condimentum nunc ut ligula convallis, ut posuere leo adipiscing</em></p>
-                        <h4>4.00, -</h4>
-                        <hr>
-                        <h3>Baked cranberry cheesecake</h3>
-                        <p><em>Estibulum sit amet velit sit amet ante sodales euismod sit amet<br></em></p>
-                        <h4>8.50, -</h4>
-                        <hr>
-                        <h3>Chocolate ice cream</h3>
-                        <p><em>Vivamus imperdiet metus vitae lacus mattis, ac blandit tortor commodo</em></p>
-                        <h4>5.10, -</h4>
-                        <hr>
-                        <h3>Rich chocolate tart with salt flakes</h3>
-                        <p><em>Phasellus cursus turpis et metus porttitor, sed feugiat justo posuere</em></p>
-                        <h4>8.50, -</h4>
-                        <hr>
-                        <h3>Vegan Victoria sponge</h3>
-                        <p><em>Nunc ullamcorper gravida magna vitae consectetur</em></p>
-                        <h4>5.00, -</h4>
-                        <hr>
-                        <h3>Chocolate &amp; raspberry tart</h3>
-                        <p><em>Nulla vulputate nunc vitae augue tempor, vel venenatis quam pretium</em></p>
-                        <h4>7.50, -</h4>
-                    </div>
-                    <!-- Collapsed Menu -->
-                    <h3 class="toggle-header"><a href="#">Wines</a></h3>
-                    <div class="toggle-panel centered">
-                        <h3>Chardonnay, Lincourt 'Steel'</h3>
-                        <p><em>Proin sed mauris eu quam hendrerit consequat sit amet</em></p>
-                        <h4>8.40, - ( 150ml )</h4>
-                        <hr>
-                        <h3>Chenin Blanc</h3>
-                        <p><em>Nunc ullamcorper gravida magna vitae consectetur. Sed pulvinar feugiat facilisis<br></em></p>
-                        <h4>9.00, -&nbsp; ( 150ml )</h4>
-                        <hr>
-                        <h3>Garntaxa Blanca</h3>
-                        <p><em>Nulla vulputate nunc vitae augue tempor, vel venenatis quam pretium</em></p>
-                        <h4>7.50, -&nbsp; ( 150ml )</h4>
-                        <hr>
-                        <h3>Pinot Grigio</h3>
-                        <p><em>Ut neque ligula, placerat et purus sit amet, malesuada interdum purus</em></p>
-                        <h4>12.00, -&nbsp; ( 150ml )</h4>
-                        <hr>
-                        <h3>Rose of Grenache</h3>
-                        <p><em>Quisque at egestas sapien. Maecenas sit amet sem ac nibh dapibus feugiat</em></p>
-                        <h4>13.30, -&nbsp; ( 150ml )</h4>
-                        <hr>
-                        <h3>Bordeaux Blend</h3>
-                        <p><em>Praesent nulla massa, imperdiet vel lacus et</em></p>
-                        <h4>15.60, -&nbsp; ( 170ml )</h4>
-                    </div>
-
-                    <!-- Collapsed Menu -->
-                    <h3 class="toggle-header"><a href="#">Drinks</a></h3>
-                    <div class="toggle-panel centered">
-                        <h3>Tea</h3>
-                        <p><em>Earl Grey / Peppermint / Chamomile / English Breakfast</em></p>
-                        <h4>4.20, -</h4>
-                        <hr>
-                        <h3>Coffe</h3>
-                        <p><em>Flat Black / Flat White / Cafe Latte / Chai Latte / Cappucino / Short Espresso</em></p>
-                        <h4>4.50, -</h4>
-                        <hr>
-                        <h3>Hot Chocolate</h3>
-                        <p><em>Nunc ullamcorper gravida magna vitae consectetur. Sed pulvinar feugiat facilisis.<br></em></p>
-                        <h4>5.00, -</h4>
-                        <hr>
-                        <h3>Extras</h3>
-                        <p><em>Vanilla / Hazelnut / Caramel / Extra shot / Decaf / Soy</em></p>
-                        <h4>0.50, -</h4>
-                        <hr>
-                        <h3>Cold Drinks</h3>
-                        <p><em>Available at Bar</em></p>
-                        <h4>, -</h4>
-                    </div>
-
+                    @endforeach
+                    @else
+                    <h3 class="toggle-header"><a href="#">Category its Empty</a></h3>
+                    @endif
                     <!-- Social Share -->
                     <div class="social-share clearfix">
                         <ul>

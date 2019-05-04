@@ -24,6 +24,7 @@
         <!--Stylesheets -->
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/custom.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
         <!-- Google Fonts -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display+SC:400,400i"> 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,700">

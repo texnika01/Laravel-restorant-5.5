@@ -20,21 +20,6 @@ class CreateMenusTable extends Migration
 			$table->boolean('active')->default(1);
 			$table->timestamps();
 		});
-
-        Schema::create('menus', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title')->unique()->index();
-            $table->text('menu');
-			$table->decimal('price', 5, 2)->default(0);
-            $table->string('image')->nullable();
-            $table->integer('category_id')->unsigned();
-			$table->foreign('category_id')
-				->references('id')
-				->on('categories')
-				->onDelete('cascade');
-			$table->boolean('active')->default(1);
-            $table->timestamps();
-        });
     }
 
     /**

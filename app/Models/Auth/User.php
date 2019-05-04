@@ -72,4 +72,10 @@ class User extends Authenticatable
 		return $this->hasMany('App\Models\PageModels\Blog');
     }
 
+    /**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function event() {
+		return $this->hasMany('App\Models\PageModels\Event');
+    }
 }

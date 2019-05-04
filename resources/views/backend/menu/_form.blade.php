@@ -12,7 +12,7 @@
 <!-- Category Form Input -->
 <div class="form-group {{ $errors->has('category') ? ' has-error' : ''}}">
     {{ html()->label('Category :') }}
-    {{ html()->select('category_id', $category ,null )->class('form-control')->placeholder('Category') }}
+    {{ html()->select('menu_category', $category ,null )->class('form-control')->placeholder('Category') }}
     @if($errors->has('category'))
         <span class="help-block">
             {{$errors->first('category')}}

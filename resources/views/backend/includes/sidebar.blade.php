@@ -70,6 +70,11 @@
                             Category
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ active_class(Active::checkUriPattern('admin/auth/menu_category*')) }}" href="{{ route('admin.menu_category') }}">
+                           Menu Category
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'open') }}">

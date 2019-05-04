@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Page;
 
 use App\Http\Requests\Backend\PageRequest\MenuRequest;
-use App\Models\PageModels\Category;
+use App\Models\PageModels\Menucategory;
 use App\Http\Controllers\Controller;
 use App\Models\PageModels\Menu;
 
@@ -37,7 +37,7 @@ class MenuController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		$category = Category::pluck('name', 'id');
+		$category = Menucategory::pluck('name', 'id');
 		return view('backend.menu.create', compact('category'));
 	}
 
@@ -61,8 +61,9 @@ class MenuController extends Controller {
 		$fileName = rand(11111111, 99999999) . '.' . $request->file('image')->getClientOriginalExtension(); // renameing image
 		$request->file('image')->move(public_path('upload/menu'), $fileName);
 		$data['image'] = $fileName;
+		//dd($data);
 		$article = $this->menu->create($data);
-		$article->category()->attach($request->input('category'));
+		$article->menucategory()->attach($request->input('category'));
 		return redirect()->route('admin.menu')->withFlashSuccess('Upload sucssess !!');
 
 		//return redirect()->back()->withFlashSuccess;

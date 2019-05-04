@@ -51,6 +51,16 @@ Breadcrumbs::register('admin.category.create', function ($breadcrumbs) {
 	$breadcrumbs->push('Category Create', route('admin.category.create'));
 });
 
+// Home >Menu Category
+Breadcrumbs::register('admin.menu_category', function ($breadcrumbs) {
+	$breadcrumbs->parent('admin.dashboard');
+	$breadcrumbs->push('Menu Category', route('admin.menu_category'));
+});
+Breadcrumbs::register('admin.menu_category.create', function ($breadcrumbs) {
+	$breadcrumbs->parent('admin.dashboard');
+	$breadcrumbs->push('Menu Category Create', route('admin.menu_category.create'));
+});
+
 require __DIR__.'/auth.php';
 require __DIR__.'/log-viewer.php';
 

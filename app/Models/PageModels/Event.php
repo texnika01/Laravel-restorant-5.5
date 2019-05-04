@@ -9,7 +9,7 @@ class Event extends Model
     protected $table = 'events';
 
     protected $fillable = [
-    	'name', 'date', 'text', 'active'
+    	'name', 'date', 'text','image', 'active'
 	];
 
     /** Relations */

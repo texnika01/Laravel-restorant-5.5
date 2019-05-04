@@ -14,128 +14,28 @@
                 </div>
                 <!--Article Content -->
                 <div class="article-content clearfix">
+                    @if($menucat !== null)
+                    @foreach($menucat as $resultcat)
                     <!-- Menu Section -->
                     <section class="classic-menu">
-                        <h2>starters</h2>
-
-                        <h4>Grilled Asparagus &amp; Bruschetta <span class="dish-price">8.40, -</span></h4>
-                        <p class="dish-details">Proin sed mauris eu quam hendrerit consequat sit amet eget mi</p>
-
-                        <h4>Carpaccio di manzo<span class="dish-price">5.00, -</span></h4>
-                        <p class="dish-details">Nunc ullamcorper gravida magna vitae consectetur. Sed pulvinar feugiat facilisis. Mauris eget justo mauris.</p>
-
-                        <h4>Mini Smoked Salmon<span class="dish-price">7.50, -</span></h4>
-                        <p class="dish-details">Nulla vulputate nunc vitae augue tempor, vel venenatis quam pretium. Mauris elementum dolor velit</p>
-
-                        <h4>Salmon Tartare<span class="dish-price">12.00, -</span></h4>
-                        <p class="dish-details">Ut neque ligula, placerat et purus sit amet, malesuada interdum purus</p>
-
-                        <h4>Bresaola salad <span class="dish-price">6,30, -</span></h4>
-                        <p class="dish-details">Quisque at egestas sapien. Maecenas sit amet sem ac nibh dapibus feugiat</p>
-
-                        <h4>Sweet Potato Fries, Garlic Aioli<span class="dish-price">7.60, -</span></h4>
-                        <p class="dish-details">Praesent nulla massa, imperdiet vel lacus et, tincidunt ullamcorper justo. Nullam a tellus ligula</p>
+                        <h2>{{ $resultcat->name}}</h2>
+                            @if($menu !== null)
+                                @foreach($menu as $result)
+                                    @if($resultcat->id  ==  $result->menu_category)
+                                        <h4>{{ $result->title }} <span class="dish-price">{{$result->price}} lv  ,kol - 1br</span></h4>
+                                        <p class="dish-details">{{ $result->menu }}</p>
+                                    @endif
+                                @endforeach
+                            @else
+                                <p class="dish-details">Menu its empty</p>
+                            @endif
                     </section>
-
-                    <!-- Menu Section -->
+                    @endforeach
+                    @else
                     <section class="classic-menu">
-                        <h2>mains</h2>
-                        <h4>Chicken and prosciutto parmigiana<span class="dish-price">12.40, -</span></h4>
-                        <p class="dish-details">Praesent auctor ante eu aliquet posuere. Cras a mauris at erat pulvinar pharetra sed vel felis</p>
-
-                        <h4>Salmon with white bean mash<span class="dish-price">15.00, -</span></h4>
-                        <p class="dish-details">Sed at est non metus ullamcorper facilisis vel tristique felis. Donec faucibus dolor leo</p>
-
-                        <h4>Butter chicken with naan<span class="dish-price">14.50, -</span></h4>
-                        <p class="dish-details">Sed consequat vel ipsum in sollicitudin. Etiam molestie, urna id placerat bibendum</p>
-
-                        <h4>French roast chicken with whole garlic<span class="dish-price">17.00, -</span></h4>
-                        <p class="dish-details">Nulla tellus velit, ultricies ut metus ut, aliquet venenatis libero. Maecenas dapibus lorem</p>
-
-                        <h4>Salmon with black bean noodles<span class="dish-price">16.20, -</span></h4>
-                        <p class="dish-details">Donec condimentum nunc ut ligula convallis, ut posuere leo adipiscing</p>
-
-                        <h4>Slow-cooked lemon and thyme lamb shanks<span class="dish-price">19.00, -</span></h4>
-                        <p class="dish-details">Donec condimentum nunc ut ligula convallis, ut posuere leo adipiscing</p>
-
-                        <h4>Tandoori chicken puffs<span class="dish-price">18.50, -</span></h4>
-                        <p class="dish-details">Estibulum sit amet velit sit amet ante sodales euismod sit amet a mi</p>
-
-                        <h4>Spiced lamb cutlets with garlic tomato salad<span class="dish-price">11.10, -</span></h4>
-                        <p class="dish-details">Vivamus imperdiet metus vitae lacus mattis, ac blandit tortor commodo</p>
-
-                        <h4>Chilli pork and basil stir-fry<span class="dish-price">22.50, -</span></h4>
-                        <p class="dish-details">Phasellus cursus turpis et metus porttitor, sed feugiat justo posuere</p>
+                        <h2>This Category its Empty</h2>
                     </section>
-
-                    <!-- Menu Section -->
-                    <section class="classic-menu">
-                        <h2>desserts</h2>
-                        <h4>Prune Armagnac cake<span class="dish-price">6.20, -</span></h4>
-                        <p class="dish-details">Donec condimentum nunc ut ligula convallis</p>
-
-                        <h4>Mixed nut &amp; honey baklava<span class="dish-price">4.00, -</span></h4>
-                        <p class="dish-details">Donec condimentum nunc ut ligula convallis, ut posuere leo adipiscing</p>
-
-                        <h4>Baked cranberry cheesecake<span class="dish-price">8.50, -</span></h4>
-                        <p class="dish-details">Estibulum sit amet velit sit amet ante sodales euismod sit amet</p>
-
-                        <h4>Chocolate ice cream<span class="dish-price">5.10, -</span></h4>
-                        <p class="dish-details">Vivamus imperdiet metus vitae lacus mattis, ac blandit tortor commodo</p>
-
-                        <h4>Rich chocolate tart with salt flakes<span class="dish-price">8.50, -</span></h4>
-                        <p class="dish-details">Phasellus cursus turpis et metus porttitor, sed feugiat justo posuere</p>
-
-                        <h4>Vegan Victoria sponge<span class="dish-price">5.00, -</span></h4>
-                        <p class="dish-details">Nunc ullamcorper gravida magna vitae consectetur</p>
-
-                        <h4>Chocolate &amp; raspberry tart<span class="dish-price">7.50, -</span></h4>
-                        <p class="dish-details">Nulla vulputate nunc vitae augue tempor, vel venenatis quam pretium</p>
-
-                    </section>
-                    <!-- Menu Section -->
-
-                    <section class="classic-menu">
-                        <h2>wines</h2>
-
-                        <h4>Chardonnay, Lincourt 'Steel'<span class="dish-price">8.40, - ( 150ml )</span></h4>
-                        <p class="dish-details">Proin sed mauris eu quam hendrerit consequat sit amet</p>
-
-                        <h4>Chenin Blanc<span class="dish-price">9.00, - ( 150ml )</span></h4>
-                        <p class="dish-details">Nunc ullamcorper gravida magna vitae consectetur. Sed pulvinar feugiat facilisis</p>
-
-                        <h4>Garntaxa Blanca<span class="dish-price">7.50, - ( 150ml )</span></h4>
-                        <p class="dish-details">Nulla vulputate nunc vitae augue tempor, vel venenatis quam pretium</p>
-
-                        <h4>Pinot Grigio<span class="dish-price">12.00, - ( 150ml )</span></h4>
-                        <p class="dish-details">Ut neque ligula, placerat et purus sit amet, malesuada interdum purus</p>
-
-                        <h4>Rose of Grenache<span class="dish-price">13.30, - ( 150ml )</span></h4>
-                        <p class="dish-details">Quisque at egestas sapien. Maecenas sit amet sem ac nibh dapibus feugiat</p>
-
-                        <h4>Bordeaux Blend<span class="dish-price">15.60, - ( 150ml )</span></h4>
-                        <p class="dish-details">Praesent nulla massa, imperdiet vel lacus et</p>
-                    </section>
-
-                    <!-- Menu Section -->
-                    <section class="classic-menu">
-                        <h2>drinks</h2>
-                        <h4>Tea<span class="dish-price">4.20, -</span></h4>
-                        <p class="dish-details">Earl Grey, Peppermint, Chamomile, English Breakfast</p>
-
-                        <h4>Coffe<span class="dish-price">4.50, -</span></h4>
-                        <p class="dish-details">Flat Black, Flat White, Cafe Latte, Chai Latte, Cappucino, Short Espresso</p>
-
-                        <h4>Hot Chocolate<span class="dish-price">5.00, -</span></h4>
-                        <p class="dish-details">Nunc ullamcorper gravida magna vitae consectetur. Sed pulvinar feugiat facilisis.</p>
-
-                        <h4>Extras<span class="dish-price">0.50, -</span></h4>
-                        <p class="dish-details">Vanilla, Hazelnut, Caramel, Extra shot, Decaf, Soy</p>
-
-                        <h4>Cold Drinks</h4>
-                        <p class="dish-details">Available at Bar</p>
-                    </section>
-
+                    @endif
                     <!-- Social Share -->
                     <div class="social-share clearfix">
                         <ul>

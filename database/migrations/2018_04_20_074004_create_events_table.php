@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('name')->unique()->index();
             $table->date('date');
             $table->text('text');
+            $table->string('image')->nullable();
 			$table->boolean('active')->default(1);
             $table->timestamps();
         });

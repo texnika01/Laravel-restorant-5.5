@@ -26,7 +26,7 @@ class MenuRequest extends FormRequest
         return [
             'title' => 'required|min:6|unique:menus',
 			'menu' => 'required|min:6',
-			'price' => 'required|numeric|between:0,99.99',
+			'price' => 'required|numeric',
 			'image' => 'required|mimes:jpeg',
         ];
     }
